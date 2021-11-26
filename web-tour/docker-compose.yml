@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    container_name: start_app
+    build: ./
+    restart: always
+    working_dir: /working_dir
+    depends_on:
+      - app_db
+    volumes:
+      - ./:/working_dir
+    command: mvn clean spring-boot:run
+    ports:
+      - 8080:8080
+  app_db:
+    container_name: mysql
+    hostname: app_db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: dp934dp
+    ports:
+      - 3306:3306
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - sqlfiles:/var/lib/mysql
+volumes:
+  sqlfiles:
