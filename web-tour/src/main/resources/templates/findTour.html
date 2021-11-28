@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Просмотр всех путевок</title>
+    <link rel="icon" href="/css/img/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+</head>
+<body>
+<div class="header">
+    <div class="container-fluid">
+        <div class="col-xs-8">
+            <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+        </div>
+        <div class="col-xs-1 text-right">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/admin"><button type="button" class="btn btn-warning">Back</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-1 text-left">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/"><button type="button" class="btn btn-warning">Home</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-2 reg" sec:authorize="isAuthenticated()">
+            <h3 class="UsName" th:text="${nickname}"></h3>
+        </div>
+    </div>
+</div>
+<div class="col-xs-3 poisk">
+    <form method="POST">
+        <h2 class="text-center" style="color: white">Поиск</h2>
+        <div>
+            <input type="text" name="start" placeholder="Откуда" class="form-control">
+        </div>
+        <div>
+            <input type="text" name="finish" placeholder="Куда" class="form-control">
+        </div>
+        <div>
+            <input type="date" name="date" class="form-control"/>
+        </div>
+        <div>
+            <input type="number" name="count" value="0" class="form-control">
+        </div>
+        <input type="hidden" name="action" th:value="filter"/>
+        <button type="submit" class="btn btn-block btn-primary">Найти</button>
+    </form>
+    <form method="POST">
+            <input type="hidden" name="action" th:value="break"/>
+            <button type="submit" class="btn btn-block btn-info">Сброс</button>
+    </form>
+    <h3 th:text="${filterError}"></h3>
+</div>
+<div class="col-xs-9 search">
+    <h3 style="color: SaddleBrown">Список всех туров:</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Откуда</th>
+            <th scope="col">Куда</th>
+            <th scope="col">Стоимость</th>
+            <th scope="col">Дата поездки</th>
+            <th scope="col">Количество оставшихся билетов</th>
+            <th scope="col">#</th>
+        </tr>
+        </thead>
+        <th:block th:each="tour: ${FilteredTours}">
+            <tr>
+                <th:block th:if="${tour.getCount()!=0}">
+                    <td th:text="${tour.getId()}"></td>
+                    <td th:text="${tour.getStart()}"></td>
+                    <td th:text="${tour.getFinish()}"></td>
+                    <td th:text="${tour.getPrice()}"></td>
+                    <td th:text="${tour.getDate()}"></td>
+                    <td th:text="${tour.getCount()}"></td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="tourId" th:value="${tour.getId()}"/>
+                            <input type="hidden" name="action" th:value="view"/>
+                            <button type="submit" class="btn btn-block btn-success">View users</button>
+                        </form>
+
+                    </td>
+                </th:block>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>

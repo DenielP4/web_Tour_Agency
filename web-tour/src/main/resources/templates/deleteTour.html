@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Удаление путевки</title>
+    <link rel="icon" href="/css/img/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+<div class="header">
+    <div class="container-fluid">
+        <div class="col-xs-8">
+            <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+        </div>
+        <div class="col-xs-1 text-right">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/admin"><button type="button" class="btn btn-warning">Back</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-1 text-left">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/"><button type="button" class="btn btn-warning">Home</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-2 reg" sec:authorize="isAuthenticated()">
+            <h3 class="UsName" th:text="${nickname}"></h3>
+        </div>
+    </div>
+</div>
+
+<div>
+    <form method="POST">
+        <div class="col-xs-6 col-xs-offset-3">
+            <h2 class="text-center" style="color: white">Удаление</h2>
+            <div>
+                <input type="number" name="id" class="form-control">
+            </div>
+        </div>
+        <div class="col-xs-2 col-xs-offset-5">
+            <button type="submit" class="btn btn-block btn-info">Удалить</button>
+        </div>
+    </form>
+    <div class="col-xs-6 col-xs-offset-3">
+        <h4 class="text-center" style="color: cyan" th:text="${deleteError}"></h4>
+        <h4 class="text-center" style="color: cyan" th:text="${deletedTour}"></h4>
+    </div>
+</div>
+</body>
+</html>

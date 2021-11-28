@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Главная</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="icon" href="/css/img/icon.png">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+</head>
+<body>
+<header>
+  <div class="header">
+    <div class="container-fluid">
+      <div class="col-xs-8">
+        <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+      </div>
+
+    <div class="col-xs-2 text-right sign-in" sec:authorize="!isAuthenticated()">
+        <nav class="nav">
+          <div class="sigNN">
+            <h4><a class="sigN nav-link active" href="/login">Войти</a></h4>
+          </div>
+        </nav>
+    </div>
+    <div class="col-xs-2 text-left zar" sec:authorize="isAuthenticated()">
+        <h3 class="UsName" th:text="${nickname}"></h3>
+    </div>
+    <div class="col-xs-2 text-left zar" sec:authorize="!isAuthenticated()">
+      <nav class="nav">
+        <div class="sigNN">
+          <h4><a class="sigN nav-link" href="/registration">Зарегистрироваться</a></h4>
+        </div>
+      </nav>
+    </div>
+    </div>
+    </div>
+  </div>
+</header>
+<div class="container-fluid">
+  <div class="col-xs-4">
+      <div sec:authorize="isAuthenticated()">
+        <div class="sigNN">
+          <h4><a class="sigN" href="/lk">Личный кабинет</a></h4>
+          <h4><a class="sigN" href="/booking">Поиск путевки</a></h4>
+        </div>
+      </div>
+      <div sec:authorize="hasRole('ADMIN')">
+        <div class="sigNN">
+          <h4><a class="sigN" href="/manager">Менеджмент</a></h4>
+        </div>
+      </div>
+      <div sec:authorize="hasRole('ADMIN')">
+        <div class="sigNN">
+          <h4><a class="sigN" href="/admin">Администрация</a></h4>
+        </div>
+      </div>
+      <div sec:authorize="isAuthenticated()">
+        <div class="sigNN">
+          <h4><a class="sigN" href="/logout">Выйти</a></h4>
+        </div>
+      </div>
+  </div>
+  <div class="col-xs-8 info">
+    <h1 class="text-center">Добро пожаловать на Наш сайт!</h1>
+    <h3 style="color: SaddleBrown">Для многих туризм – это хобби. И очень хорошо, когда хобби становится любимой работой. Именно поэтому среди туристических агентств такая большая конкуренция. Но хороший продающий текст для турагентства поможет показать Вашу рекламу отдыха на море с выгодной стороны и прочно занять свою нишу на туристическом рынке.</h3>
+  </div>
+</div>
+</body>
+</html>

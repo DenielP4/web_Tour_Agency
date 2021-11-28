@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Администрация</title>
+  <link rel="icon" href="/css/img/icon.png">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+</head>
+
+<body>
+<header>
+  <div class="header">
+    <div class="container-fluid">
+      <div class="col-xs-4">
+        <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+      </div>
+      <div class="col-xs-6 menuN">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active menu" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu" href="admin/add">Creation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu" href="admin/find">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu" href="admin/edit">Edit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link menu" href="admin/delete">Delete</a>
+        </li>
+      </ul>
+      </div>
+      <div class="col-xs-2 reg" sec:authorize="isAuthenticated()">
+        <h3 class="UsName" th:text="${nickname}"></h3>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="spisok_user col-xs-12 search">
+  <h3 style="color: SaddleBrown">Список всех пользователей:</h3>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Email</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Roles</th>
+      <th scope="col">Tours</th>
+      <th scope="col">#</th>
+    </tr>
+    </thead>
+    <th:block th:each="user: ${allUsers}">
+      <tr>
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getUsername()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+        <td th:text="${user.getFirstname()}"></td>
+        <td th:text="${user.getLastname()}"></td>
+        <td>
+          <th:block th:each="role: ${user.getRoles()}"><h5 th:text="${role.getName()} + ';'"></h5> </th:block>
+        </td>
+        <td>
+          <th:block th:each="tour: ${user.getTours}"><h5 th:text="${tour.getId()}"></h5></th:block>
+        </td>
+        <td>
+          <form method="post">
+            <input type="hidden" name="userId" th:value="${user.getId()}"/>
+            <input type="hidden" name="action" th:value="delete"/>
+            <button type="submit" class="btn btn-block btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </th:block>
+  </table>
+</div>
+</body>
+</html>

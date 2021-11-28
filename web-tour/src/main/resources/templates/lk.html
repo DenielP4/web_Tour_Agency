@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Личный кабинет</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="icon" href="/css/img/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+</head>
+<body>
+<div class="header">
+    <div class="container-fluid">
+        <div class="col-xs-8">
+            <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+        </div>
+        <div class="col-xs-1 text-right">
+                <nav class="nav">
+                    <div class="sigNN fff">
+                        <a class="sigN nav-link active" href="/logout"><button type="button" class="btn btn-warning">Выйти</button></a>
+                    </div>
+                </nav>
+        </div>
+        <div class="col-xs-1 text-left">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <h4><a class="sigN nav-link" href="/"><button type="button" class="btn btn-warning">Home</button></a></h4>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-2 reg" sec:authorize="isAuthenticated()">
+            <h3 class="UsName" th:text="${nickname}"></h3>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="col-xs-4 lkinfo">
+        <h2>Личный кабинет</h2>
+        <h4 th:text="'Nickname: ' + ${nickname}"></h4>
+        <h4 th:text="'Email: ' + ${mail}"></h4>
+        <h4 th:text="'FirstName: ' + ${name}"></h4>
+        <h4 th:text="'LastName: ' + ${lastname}"></h4>
+        <h4>Role used:
+            <th:block th:each="role: ${roles}">
+                <h4 th:text="'Roles: ' + ${role.name}"></h4>
+            </th:block>
+        </h4>
+    </div>
+    <div class="col-xs-8 turinfo">
+        <h3 style="color: SaddleBrown">Список посещаемых туров:</h3>
+        <th:block th:if="${count!=0}">
+            <table class="table table-sm">
+                <thead>
+                <th  scope="col">Откуда</th>
+                <th  scope="col">Куда</th>
+                <th  scope="col">Стоимость</th>
+                <th  scope="col">Дата отъезда</th>
+                </thead>
+                <th:block th:each="tour: ${usersTours}">
+                    <tr>
+                        <td th:text="${tour.getStart()}"></td>
+                        <td th:text="${tour.getFinish()}"></td>
+                        <td th:text="${tour.getPrice()}"></td>
+                        <td th:text="${tour.getDate()}"></td>
+                    </tr>
+                </th:block>
+            </table>
+        </th:block>
+    </div>
+</div>
+</body>
+</html>

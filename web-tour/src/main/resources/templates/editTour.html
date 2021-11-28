@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Изменение путевки</title>
+    <link rel="icon" href="/css/img/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+<div class="header">
+    <div class="container-fluid">
+        <div class="col-xs-8">
+            <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+        </div>
+        <div class="col-xs-1 text-right">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/admin"><button type="button" class="btn btn-warning">Back</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-1 text-left">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/"><button type="button" class="btn btn-warning">Home</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-2 reg" sec:authorize="isAuthenticated()">
+            <h3 class="UsName" th:text="${nickname}"></h3>
+        </div>
+    </div>
+</div>
+
+<div>
+    <form method="POST">
+        <div class="col-xs-3 col-xs-offset-3">
+            <h2 class="text-center"  style="color: white">Изменение</h2>
+            <div>
+                <input type="number" name="Id" placeholder="Id" autofocus="true" class="form-control" min="1">
+            </div>
+            <div>
+                <input type="text" name="start" placeholder="Откуда" class="form-control">
+            </div>
+            <div>
+                <input type="text" name="finish" placeholder="Куда" class="form-control">
+            </div>
+            <div>
+                <input type="number" name="price" class="form-control" value="0"/>
+            </div>
+            <div>
+                <input type="date" name="date" class="form-control"/>
+            </div>
+            <div>
+                <input type="number" name="count" value="-1" class="form-control">
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <h2 class="text-center" style="color: white">Описание</h2>
+            <div>
+                <input type="text" name="img" placeholder="Image" class="form-control">
+            </div>
+            <div>
+                <input type="text" name="text" placeholder="Text" class="form-control">
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-3">
+            <button type="submit" class="btn btn-block btn-danger">Изменить</button>
+        </div>
+    </form>
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+        <h4 th:text="${editError}" style="color: white"></h4>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Регистрация</title>
+  <link rel="icon" href="/css/img/icon.png">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+</head>
+
+<body>
+<div class="header">
+  <div class="container-fluid">
+    <div class="col-xs-10">
+      <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+    </div>
+    <div class="col-xs-2 text-right">
+      <nav class="nav">
+        <div class="sigNN fff">
+          <a class="sigN nav-link active" href="/"><button type="button" class="btn btn-warning">Home</button></a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div>
+  <form method="POST">
+    <div class="col-xs-4">
+      <h2 class="text-center" style="color: white">Регистрация</h2>
+      <div>
+          <input type="text" name="username" placeholder="Username"
+                 autofocus="true" class="form-control">
+        <h3 th:text="${usernameError}"></h3>
+      </div>
+      <div>
+          <input type="email" name="email" placeholder="Email" class="form-control">
+      </div>
+      <div>
+          <input type="text" name="firstname" placeholder="FirstName" class="form-control">
+      </div>
+      <div>
+          <input type="text" name="lastname" placeholder="LastName" class="form-control">
+      </div>
+      <div>
+          <input type="password" name="password" placeholder="Password" class="form-control">
+      </div>
+      <div>
+          <input type="password" name="passwordConfirm"
+                 placeholder="Confirm your password" class="form-control">
+        <h3 th:text="${passwordError}"></h3>
+      </div>
+    <button type="submit" class="btn btn-block btn-primary">Зарегистрироваться</button>
+    </div>
+  </form>
+</div>
+<div class="col-xs-8 search">
+  <h3 class="text-center" style="color: white">Информация</h3>
+  <h4 style="color: SaddleBrown">Добро пожаловать на страницу регистрации нашей туристической компании "ЕдуКудаХочу!!!"! После нажатия на кнопку "Зарегистрироваться" Вам нужно будет авторизоваться! Далее переходите к нашим турам и выбирайте, что Вам по душе. С помощью удобного фильтра Вы сможете с легкостью подобрать путёвку. Просим, указывать достоверную информацию о себе. Ибо после покупки чек придет именно на Вашу почту. Без него Вы не сможете доказать, что Вами был приобрен тур!</h4>
+  <h5 class="text-right" style="color: SaddleBrown">С уважением, компания "ЕдуКудаХочу!!!"</h5>
+</div>
+
+</div>
+</body>
+</html>

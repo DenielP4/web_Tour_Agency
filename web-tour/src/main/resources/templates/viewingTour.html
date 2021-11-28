@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Описание</title>
+    <link rel="icon" href="/css/img/icon.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_back.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+</head>
+
+<body>
+<div class="header">
+    <div class="container-fluid">
+        <div class="col-xs-8">
+            <h3 class="NameWeb">ЕдуКудаХочу!!!</h3>
+        </div>
+        <div class="col-xs-2 text-right">
+            <nav class="nav">
+                <div class="sigNN fff">
+                    <a class="sigN nav-link active" href="/booking"><button type="button" class="btn btn-warning">Back</button></a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-xs-2 reg" sec:authorize="isAuthenticated()">
+            <h3 class="UsName" th:text="${nickname}"></h3>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="search container">
+        <div class="col-xs-4 col-xs-offset-1" style="margin-top: 10px;">
+            <img th:src="${image}" style="width: 100%; border: 2px solid red; border-radius: 5px">
+            <div>
+            <form method="POST">
+                <div>
+                    <input type="number" name="minusCount" class="form-control" min="1" value="0">
+                </div>
+                <button type="submit" class="btn btn-block btn-danger">Купить</button>
+            </form>
+                <h4 style="color: SaddleBrown" th:text="${ByError}"></h4>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <h4 style="color: SaddleBrown" th:text="${characteristics}"></h4>
+            <h5 style="color: SaddleBrown" th:text="${description}"></h5>
+        </div>
+    </div>
+</div>
+</body>
+</html>
