@@ -1,0 +1,108 @@
+body{
+	background: url("img/bg1.jpg") center fixed;
+	background-size: cover;
+}
+.header{
+	margin-bottom: 10px;
+}
+.NameWeb{
+font-size: 2em;
+  background: linear-gradient(90deg, rgba(255,248,0,1) 20%, rgba(255,53,111,1) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding: 0.3em 0.6em ;
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #12BCB0 20%, #FABE0E 70%);
+  border-image-slice: 1;
+}
+.PersonalArea{
+
+}
+
+.PersonalArea a{
+	text-decoration:none;
+}
+.section{
+	margin: 20px
+}
+.container{
+	border: 4px;
+	border-color: red;
+	background: rgba(255, 255, 224, 0.6);
+}
+
+.sign-in{
+    margin-top: 19px;
+}
+.reg{
+    margin-top: 10px;
+}
+.zar{
+    margin-top: 19px;
+}
+.UsName{
+    font-family: 'Rubik One', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    background: #2E2F45;
+    display: table;
+    margin: 20px auto;
+    color: white;
+    border-radius: 5px;
+    mix-blend-mode: multiply;
+    padding: 5px 10px;
+}
+.sigN{
+    color: white;
+}
+.sigN a{
+    text-decoration: none;
+}
+.sigN a:hover{
+    text-decoration: none;
+}
+
+.sigNN a{
+    text-decoration: none;
+}
+.fff{
+    margin-top: 30px;
+}
+a:hover{
+    text-decoration: none;
+}
+.info{
+    border-radius: 10px;
+    border: 3px solid yellow;
+    background-color: rgba(255, 218, 185, 0.9);
+    color: white;
+}
+.lkinfo{
+    border-radius: 10px;
+    border: 3px solid blue;
+    background-color: rgba(175, 238, 238, 0.6);
+    color: white;
+}
+.turinfo{
+    border: 3px solid yellow;
+    border-radius: 10px;
+    background-color: rgba(255, 218, 185, 0.9);
+}
+.search{
+    border: 2px solid yellow;
+    background: rgba(255, 218, 185, 0.9);
+}
+.When{
+    color: white;
+}
+.menu{
+    color: white;
+    font-size: 15px;
+}
+.menuN{
+    margin-top: 25px;
+}
+.poisk{
+    margin-top: 25px;
+}
